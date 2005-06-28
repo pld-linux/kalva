@@ -1,15 +1,14 @@
 # TODO: Make it build.
 Summary:	A Lightweight Videorecorder Application
-Summary(pl):	TODO
+Summary(pl):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
 Version:	0.6
 Release:	0.1
 License:	GPL
-Group:		productivity/multimedia/video
-######		Unknown group!
+Group:		X11/Applications/Multimedia
 Source0:	http://www.andreas-silberstorff.de/ktvapp/download/SOURCES/%{name}-%{version}.tar.bz2
 # Source0-md5:	a257f0fadb05b31e9357b1c3b6241dab
-URL:		http://www.andreas-silberstorff.de/ktvapp
+URL:		http://www.andreas-silberstorff.de/ktvapp/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.2.0
@@ -18,16 +17,23 @@ BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Kalva is A Lightweight Videorecorder Application Kalva is a simple
+Kalva is A Lightweight Videorecorder Application. It is a simple
 videorecorder using the MEncoder to do the real work. Kalva provides
-immediate recording and sceduling recordings for movies and serials.
+immediate recording and scheduling recordings for movies and serials.
 Kalva has a pluginsystem for im- and exportfilters for channellists
-from other tv applications and can build a new channellist via scantv.
+from other TV applications and can build a new channellist via scantv.
 Kalva provides a convenient DCOP interface so that it can be controled
 via the commandline or by external programs like xmltv browsers.
 
 %description -l pl
-TODO
+Kalva (Kalva is A Leightweight Videorecorder Application) to lekka
+aplikacja do nagrywania obrazu. U¿ywa MEncodera do w³a¶ciwej pracy.
+Kalva pozwala na natychmiastowe nagrywanie oraz planowanie nagrañ
+filmów i seriali. Ma system wtyczek do filtrów importu i eksportu list
+kana³ów z innych aplikacji telewizyjnych i mo¿e tworzyæ nowe listy
+kana³ów poprzez scantv. Kalva dostarcza wygodny interfejs DCOP, tak
+wiêc mo¿e byæ sterowana z linii poleceñ lub przez zewnêtrzne programy,
+takie jak przegl±darki xmltv.
 
 %prep
 #setup -q -n %{name}
