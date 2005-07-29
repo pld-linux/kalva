@@ -1,19 +1,22 @@
-# TODO: Make it build.
+# TODO:
+# - for scheduling recordings req. perl-Config-Crontab
+#
 Summary:	A Lightweight Videorecorder Application
 Summary(pl):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
-Version:	0.6
+Version:	0.6.2
 Release:	0.1
-License:	GPL
+License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://www.andreas-silberstorff.de/ktvapp/download/SOURCES/%{name}-%{version}.tar.bz2
-# Source0-md5:	a257f0fadb05b31e9357b1c3b6241dab
+# Source0-md5:	014a11aeb434540a1106b7140dca2b62
 URL:		http://www.andreas-silberstorff.de/ktvapp/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 9:3.2.0
+BuildRequires:	kdelibs-devel >= 9:3.3.0
 BuildRequires:	rpmbuild(macros) >= 1.129
-#BuildRequires:	unsermake >= 040805
+BuildRequires:	sed >= 4.0
+Requires:	mplayer
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -36,12 +39,13 @@ wiêc mo¿e byæ sterowana z linii poleceñ lub przez zewnêtrzne programy,
 takie jak przegl±darki xmltv.
 
 %prep
-#setup -q -n %{name}
 %setup -q
 
 %build
+%{__sed} -i 's,/usr/lib/tvapp,%{_datadir}/apps/kalva,' kalva/src/tvapp.pl
+echo "Categories=Qt;KDE;AudioVideo;Recorder;" >> kalva/src/kalva.desktop
+
 cp -f /usr/share/automake/config.sub admin
-#export PATH=/usr/share/unsermake:$PATH
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
@@ -54,7 +58,6 @@ cp -f /usr/share/automake/config.sub admin
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -62,16 +65,28 @@ install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir}}
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
 
-%find_lang %{name} --with-kde
+mv -f $RPM_BUILD_ROOT/usr/lib/tvapp/tvapp.pm \
+	$RPM_BUILD_ROOT%{_datadir}/apps/kalva
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
+%doc AUTHORS TODO
 %attr(755,root,root) %{_bindir}/*
-%{_pixmapsdir}/*
-%{_desktopdir}/*
-%{_iconsdir}/*/*/apps/%{name}.png
-%{_datadir}/mimelnk/application/*
-%{_datadir}/apps/%{name}
+%attr(755,root,root) %{_libdir}/*.so.*.*.*
+%attr(755,root,root) %{_libdir}/kde3/*.so
+%{_libdir}/kde3/*.la
+%{_datadir}/apps/kalva
+%{_datadir}/apps/scantvplugin
+%{_datadir}/apps/tv_stationsfilterplugin
+%{_datadir}/apps/xawtvrcfilterplugin
+%{_datadir}/config.kcfg/kalva.kcfg
+%{_datadir}/services/*
+%{_datadir}/servicetypes/*
+%{_desktopdir}/kalva.desktop
+%{_iconsdir}/hicolor/*/apps/%{name}.png
