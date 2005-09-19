@@ -4,13 +4,13 @@
 Summary:	A Lightweight Videorecorder Application
 Summary(pl):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
-Version:	0.6.2
+Version:	0.8.0
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
-Source0:	http://www.andreas-silberstorff.de/ktvapp/download/SOURCES/%{name}-%{version}.tar.bz2
-# Source0-md5:	014a11aeb434540a1106b7140dca2b62
-URL:		http://www.andreas-silberstorff.de/ktvapp/
+Source0:	http://download.berlios.de/kalva/%{name}-%{version}.tar.bz2
+# Source0-md5:	c1d61511a27b6a681a1a3c99716f232e
+URL:		http://kalva.berlios.de/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 9:3.3.0
@@ -69,13 +69,15 @@ rm -rf $RPM_BUILD_ROOT
 mv -f $RPM_BUILD_ROOT/usr/lib/tvapp/tvapp.pm \
 	$RPM_BUILD_ROOT%{_datadir}/apps/kalva
 
+%find_lang %{name} --with-kde
+
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS TODO
 %attr(755,root,root) %{_bindir}/*
@@ -90,4 +92,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/*
 %{_datadir}/servicetypes/*
 %{_desktopdir}/kalva.desktop
-%{_iconsdir}/hicolor/*/apps/%{name}.png
+%{_iconsdir}/hicolor/*/*/*.png
