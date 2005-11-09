@@ -4,12 +4,12 @@
 Summary:	A Lightweight Videorecorder Application
 Summary(pl):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
-Version:	0.8.0
+Version:	0.8.49
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://download.berlios.de/kalva/%{name}-%{version}.tar.bz2
-# Source0-md5:	c1d61511a27b6a681a1a3c99716f232e
+# Source0-md5:	d7544ef2c652fa08531fa0a09129e1bf
 URL:		http://kalva.berlios.de/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -44,7 +44,7 @@ takie jak przegl±darki xmltv.
 
 %build
 %{__sed} -i 's,/usr/lib/tvapp,%{_datadir}/apps/kalva,' kalva/src/tvapp.pl
-echo "Comment[pl]=Lekka aplikacja do nagrywania obrazu" >> kalva/src/kalva.destkop
+echo "Comment[pl]=Lekka aplikacja do nagrywania obrazu" >> kalva/src/kalva.desktop
 echo "Categories=Qt;KDE;AudioVideo;Recorder;" >> kalva/src/kalva.desktop
 
 cp -f /usr/share/automake/config.sub admin
