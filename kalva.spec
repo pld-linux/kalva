@@ -4,12 +4,12 @@
 Summary:	A Lightweight Videorecorder Application
 Summary(pl):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
-Version:	0.8.49c
-Release:	1
+Version:	0.8.50
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://download.berlios.de/kalva/%{name}-%{version}.tar.bz2
-# Source0-md5:	cdaf917592c0551cd8e5e8033ac6ac85
+# Source0-md5:	5858909310d1ef795a6b7ecc77de7f30
 URL:		http://kalva.berlios.de/
 BuildRequires:	autoconf
 BuildRequires:	automake
