@@ -4,12 +4,12 @@
 Summary:	A Lightweight Videorecorder Application
 Summary(pl):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
-Version:	0.8.50
+Version:	0.8.78
 Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Multimedia
 Source0:	http://download.berlios.de/kalva/%{name}-%{version}.tar.bz2
-# Source0-md5:	5858909310d1ef795a6b7ecc77de7f30
+# Source0-md5:	4cdcb0591fa031a53b514cb8e1e4c9c1
 URL:		http://kalva.berlios.de/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -43,7 +43,7 @@ takie jak przegl±darki xmltv.
 %setup -q
 
 %build
-%{__sed} -i 's,/usr/lib/tvapp,%{_datadir}/apps/kalva,' kalva/src/tvapp.pl
+%{__sed} -i 's,%{_prefix}/lib/tvapp,%{_datadir}/apps/kalva,' kalva/src/tvapp.pl
 echo "Comment[pl]=Lekka aplikacja do nagrywania obrazu" >> kalva/src/kalva.desktop
 echo "Categories=Qt;KDE;AudioVideo;Recorder;" >> kalva/src/kalva.desktop
 
@@ -67,7 +67,7 @@ rm -rf $RPM_BUILD_ROOT
 	kde_libs_htmldir=%{_kdedocdir} \
 	kdelnkdir=%{_desktopdir} \
 
-mv -f $RPM_BUILD_ROOT/usr/lib/tvapp/tvapp.pm \
+mv -f $RPM_BUILD_ROOT%{_prefix}/lib/tvapp/tvapp.pm \
 	$RPM_BUILD_ROOT%{_datadir}/apps/kalva
 
 %find_lang %{name} --with-kde
@@ -85,6 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*.so.*.*.*
 %attr(755,root,root) %{_libdir}/kde3/*.so
 %{_libdir}/kde3/*.la
+%{_libdir}/*.la
 %{_datadir}/apps/kalva
 %{_datadir}/apps/scantvplugin
 %{_datadir}/apps/tv_stationsfilterplugin
@@ -94,3 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/servicetypes/*
 %{_desktopdir}/kalva.desktop
 %{_iconsdir}/hicolor/*/*/*.png
+%{_includedir}/kchlstfilterplugin/channellistinterface.h
+%{_includedir}/kchlstfilterplugin/kchlstfilterplugin.h
+%{_prefix}/lib/libkchlstfilterplugininterfaces.la
+%{_desktopdir}/kde/kalva.desktop
