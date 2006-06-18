@@ -42,11 +42,11 @@ takie jak przegl±darki xmltv.
 %prep
 %setup -q
 
-%build
-%{__sed} -i 's,%{_prefix}/lib/tvapp,%{_datadir}/apps/kalva,' kalva/src/tvapp.pl
+%{__sed} -i 's,/usr/lib/tvapp,%{_datadir}/apps/kalva,' kalva/src/tvapp.pl
 echo "Comment[pl]=Lekka aplikacja do nagrywania obrazu" >> kalva/src/kalva.desktop
 echo "Categories=Qt;KDE;AudioVideo;Recorder;" >> kalva/src/kalva.desktop
 
+%build
 cp -f /usr/share/automake/config.sub admin
 %{__make} -f admin/Makefile.common cvs
 
