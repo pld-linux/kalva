@@ -2,7 +2,7 @@
 # - for scheduling recordings req. perl-Config-Crontab
 #
 Summary:	A Lightweight Videorecorder Application
-Summary(pl):	Lekka aplikacja do nagrywania obrazu
+Summary(pl.UTF-8):   Lekka aplikacja do nagrywania obrazu
 Name:		kalva
 Version:	0.8.78
 Release:	0.1
@@ -29,15 +29,15 @@ from other TV applications and can build a new channellist via scantv.
 Kalva provides a convenient DCOP interface so that it can be controled
 via the commandline or by external programs like xmltv browsers.
 
-%description -l pl
+%description -l pl.UTF-8
 Kalva (Kalva is A Leightweight Videorecorder Application) to lekka
-aplikacja do nagrywania obrazu. U¿ywa MEncodera do w³a¶ciwej pracy.
-Kalva pozwala na natychmiastowe nagrywanie oraz planowanie nagrañ
-filmów i seriali. Ma system wtyczek do filtrów importu i eksportu list
-kana³ów z innych aplikacji telewizyjnych i mo¿e tworzyæ nowe listy
-kana³ów poprzez scantv. Kalva dostarcza wygodny interfejs DCOP, tak
-wiêc mo¿e byæ sterowana z linii poleceñ lub przez zewnêtrzne programy,
-takie jak przegl±darki xmltv.
+aplikacja do nagrywania obrazu. UÅ¼ywa MEncodera do wÅ‚aÅ›ciwej pracy.
+Kalva pozwala na natychmiastowe nagrywanie oraz planowanie nagraÅ„
+filmÃ³w i seriali. Ma system wtyczek do filtrÃ³w importu i eksportu list
+kanaÅ‚Ã³w z innych aplikacji telewizyjnych i moÅ¼e tworzyÄ‡ nowe listy
+kanaÅ‚Ã³w poprzez scantv. Kalva dostarcza wygodny interfejs DCOP, tak
+wiÄ™c moÅ¼e byÄ‡ sterowana z linii poleceÅ„ lub przez zewnÄ™trzne programy,
+takie jak przeglÄ…darki xmltv.
 
 %prep
 %setup -q
