@@ -2,7 +2,7 @@
 # - for scheduling recordings req. perl-Config-Crontab
 #
 Summary:	A Lightweight Videorecorder Application
-Summary(pl.UTF-8):   Lekka aplikacja do nagrywania obrazu
+Summary(pl.UTF-8):	Lekka aplikacja do nagrywania obrazu
 Name:		kalva
 Version:	0.8.78
 Release:	0.1
